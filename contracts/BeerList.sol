@@ -5,7 +5,13 @@ contract BeerList {
 
     string bottleID;
     string name;
-    uint256 price;
+    uint256 price = 0;
+
+    // on install create a default beer
+    constructor() public {
+        //sellBeer("0x0","Default beer",100000000000000000);
+    }
+
 
     //Sells a beer
     function sellBeer(string _bottleID, string _name, uint256 _price) public {
@@ -17,11 +23,8 @@ contract BeerList {
     }
 
     //Returns the sold article
-    function getArticle() public view returns (address _seller, string _bottleID, string _name, uint256 _price){
+    function getBeer() public view returns (address _seller, string _bottleID, string _name, uint256 _price){
         return (seller, bottleID, name, price);
     }
 
-    constructor() public {
-
-    }
 }

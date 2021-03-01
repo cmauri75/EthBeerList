@@ -11,7 +11,7 @@ manages deployment of contracts
   
 Decided to use ganache for testing as specified in truffle.js
 ```
-truffle migrate --network ganache
+truffle migrate --compile-all --reset --network ganache
 ```
 
 Connect to ganache and check contract address and balance on account0 (deployer), I paied gas to deploy contract.
@@ -25,9 +25,10 @@ Now interact with deployed contact. Account[1] sells a beer (so pays gas for it)
 ```
 BeerList.deployed().then(function(instance) {app=instance});
 app
-app.getArticle()
-app.sellBeer("0x00123","Ceres",web3.toWei(1,"ether"),{from:web3.eth.accounts[1]})
+app.getBeer()
+app.sellBeer("0x00123","Ceres",web3.toWei(1.23,"ether"),{from:web3.eth.accounts[1]})
 web3.fromWei(web3.eth.getBalance(web3.eth.accounts[1]),"ether").toNumber()
+.exit
 ```
 
 Now create test for our contract (very important) BeerListHappyPath

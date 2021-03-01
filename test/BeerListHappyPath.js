@@ -11,7 +11,7 @@ contract(BeerList, function (accounts) {
 
     it("Should be initialized with empty values", function () {
         return BeerList.deployed().then(function (instance) {
-            return instance.getArticle();
+            return instance.getBeer();
         }).then(function (data) {
             assert.equal(data[0], 0x0, "Seller must be empty");
             assert.equal(data[1], "", "Bottle id must be empty");
@@ -25,7 +25,7 @@ contract(BeerList, function (accounts) {
             beerListInstance = instance;
             return beerListInstance.sellBeer(bottleId, beerName, web3.toWei(beerPrice, "ether"), {from: web3.eth.accounts[1]})
         }).then(function () {
-            return beerListInstance.getArticle();
+            return beerListInstance.getBeer();
         }).then(function (data) {
             assert.equal(data[0], seller, "Seller must be seller id");
             assert.equal(data[1], bottleId, "Bottle id must be correct");
